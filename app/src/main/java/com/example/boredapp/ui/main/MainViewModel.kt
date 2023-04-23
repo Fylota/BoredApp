@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    mainRepository: MainRepository
+    private val mainRepository: MainRepository
 ) : ViewModel() { }
