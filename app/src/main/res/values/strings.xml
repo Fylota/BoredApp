@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BoredApp</string>
+    <string name="database">BoredApp.db</string>
 </resources>
