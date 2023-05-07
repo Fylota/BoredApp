@@ -5,5 +5,4 @@ import javax.inject.Inject
 
 class DetailsRepository @Inject constructor(
     private val boredActivityDao: BoredActivityDao
-) {
-}
+) { }

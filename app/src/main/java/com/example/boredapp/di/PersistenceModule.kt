@@ -3,7 +3,7 @@ package com.example.boredapp.di
 import android.app.Application
 import androidx.room.Room
 import com.example.boredapp.R
-import com.example.boredapp.persistence.AppDatabase
+import com.example.boredapp.persistence.BoredActivityDatabase
 import com.example.boredapp.persistence.BoredActivityDao
 import dagger.Module
 import dagger.Provides
@@ -17,11 +17,11 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun provideAppDatabase(application: Application): AppDatabase {
+    fun provideAppDatabase(application: Application): BoredActivityDatabase {
         return Room
             .databaseBuilder(
                 application,
-                AppDatabase::class.java,
+                BoredActivityDatabase::class.java,
                 application.getString(R.string.database)
             )
             .fallbackToDestructiveMigration()
@@ -30,7 +30,7 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun provideBoredActivityDao(appDatabase: AppDatabase): BoredActivityDao {
-        return appDatabase.boredActivityDao()
+    fun provideBoredActivityDao(boredActivityDatabase: BoredActivityDatabase): BoredActivityDao {
+        return boredActivityDatabase.boredActivityDao()
     }
 }
