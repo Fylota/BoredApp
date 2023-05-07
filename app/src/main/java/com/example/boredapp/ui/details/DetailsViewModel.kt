@@ -7,4 +7,5 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
     detailsRepository: DetailsRepository
-) : ViewModel() { }
+) : ViewModel() {
+}
