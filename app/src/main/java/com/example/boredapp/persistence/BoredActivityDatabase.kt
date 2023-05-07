@@ -5,6 +5,6 @@ import androidx.room.RoomDatabase
 import com.example.boredapp.model.BoredActivity
 
 @Database(entities = [BoredActivity::class], version = 1, exportSchema = true)
-abstract class AppDatabase : RoomDatabase() {
+abstract class BoredActivityDatabase : RoomDatabase() {
     abstract fun boredActivityDao(): BoredActivityDao
 }
