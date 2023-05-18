@@ -3,7 +3,11 @@ package com.example.boredapp.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.core.view.WindowCompat
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
+import com.example.boredapp.ui.navigation.BoredAppNavHost
 import com.example.boredapp.ui.theme.BoredAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -11,13 +15,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
         setContent {
-            BoredAppTheme() {
-                // A surface container using the 'background' color from the theme
-                BoredAppMainScreen()
+            BoredAppTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    BoredAppNavHost()
+                }
             }
         }
     }

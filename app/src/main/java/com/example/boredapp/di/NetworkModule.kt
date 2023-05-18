@@ -17,7 +17,7 @@ object NetworkModule {
     fun provideRetrofit(): Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("http://www.boredapi.com/api/")
+            .baseUrl("https://www.boredapi.com/api/")
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
 
