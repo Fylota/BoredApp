@@ -6,7 +6,12 @@ import com.example.boredapp.model.BoredActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import junit.framework.Assert.assertFalse
+import junit.framework.Assert.assertTrue
+import kotlinx.coroutines.flow.count
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
@@ -46,12 +51,39 @@ class BoredActivityDaoTest {
         database.close()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun insertActivity() = runBlocking {
-        val mockData = BoredActivity.mock()
+        val mockData: BoredActivity = BoredActivity.mock()
+        val mockDataList: List<BoredActivity> = listOf(mockData)
         activityDao.insertBoredActivity(mockData)
         val allActivities = activityDao.getAllBoredActivities()
-        assertThat(allActivities[0].toString(), `is`(mockData.toString()))
+        assertThat(allActivities.first(), `is` (mockDataList))
+    }
+
+    @Test
+    fun modifyActivity() = runBlocking {
+        val mockData: BoredActivity = BoredActivity.mock()
+        activityDao.insertBoredActivity(mockData)
+
+        val editedActivity: BoredActivity = mockData.copy(participants = 10)
+
+        activityDao.updateBoredActivity(editedActivity)
+
+        val getUpdatedActivity = activityDao.getBoredActivity(editedActivity.key)
+        assertThat(getUpdatedActivity.first().participants, `is` (10))
+    }
+
+    @Test
+    fun deleteActivity() = runBlocking {
+        val mockData: BoredActivity = BoredActivity.mock()
+        val activityFlow = activityDao.getAllBoredActivities()
+
+        activityDao.insertBoredActivity(mockData)
+
+        assertFalse(activityFlow.take(1).toList().flatten().isEmpty())
+
+        activityDao.deleteBoredActivity(mockData)
+
+        assertTrue(activityFlow.take(1).toList().flatten().isEmpty())
     }
 }

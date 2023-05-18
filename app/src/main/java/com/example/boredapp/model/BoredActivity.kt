@@ -6,14 +6,14 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "activities")
-data class BoredActivity (
+data class BoredActivity(
     @PrimaryKey(autoGenerate = true) val key: Long = 0,
-    @ColumnInfo(name = "activity") val activity: String,
+    @ColumnInfo(name = "activity") var activity: String,
     val accessibility: Double,
     val type: String,
     val participants: Int,
     val price: Double,
-    val link: String
+    val link: String?
 ) {
     companion object {
 

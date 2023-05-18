@@ -72,8 +72,8 @@ class ApiResponseTest {
                 .setResponseCode(200)
                 .setBody(mockedResponse)
         )
-        val response = runBlocking { repository.getActivityByKey(3943506) }
-        val json = gson.toJson(response.body())
+        val response = runBlocking { repository.getActivityByKey(3943505) }
+        val json = gson.toJson(response)
         val resultResponse = JsonParser.parseString(json)
         val expectedResponse = JsonParser.parseString(mockedResponse)
         Assert.assertNotNull(response)
