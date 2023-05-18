@@ -27,7 +27,7 @@ fun BoredAppNavHost(
         composable(NavScreen.Home.route) {
             BoredAppMainScreen(
                 onNavigateToAbout = { navController.navigate(NavScreen.About.route) },
-                onNavigateToDetails = {navController.navigate("${NavScreen.Details.route}/$it")},
+                onNavigateToDetails = {navController.navigate("${NavScreen.Details.route}/$it") {popUpTo(NavScreen.Home.route)} },
                 viewModel = hiltViewModel()
         )}
         composable(NavScreen.About.route) { AboutScreen(navigateUp = { navController.navigateUp() }) }
