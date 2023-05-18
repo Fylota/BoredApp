@@ -13,6 +13,9 @@ class MainRepository @Inject constructor(
     suspend fun getRandomActivity(): BoredActivity? =
         boredActivityService.getRandomActivity(null).body()
 
+    suspend fun getActivityByKey(key: Long): BoredActivity? =
+        boredActivityService.getRandomActivity(key).body()
+
     fun getAllActivitiesFromDB(): Flow<List<BoredActivity>> = boredActivityDao.getAllBoredActivities()
 
     fun getActivityFromDB(key: Long): Flow<BoredActivity> = boredActivityDao.getBoredActivity(key)
