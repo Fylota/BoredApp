@@ -212,6 +212,16 @@ fun ResultScreen(activity: BoredActivity, viewModel: MainViewModel) {
                 Text(text = "Get another activity")
             }
         }
+        Row(horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+            Button(onClick = {
+                viewModel.triggerTestCrash()
+                Toast.makeText(context, "Test Crash", Toast.LENGTH_SHORT).show()
+            }) {
+                Text(text = "Test Crash")
+            }
+        }
+
     }
 }
 
