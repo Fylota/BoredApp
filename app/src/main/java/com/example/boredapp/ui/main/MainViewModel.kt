@@ -44,6 +44,10 @@ class MainViewModel @Inject constructor(
             mainRepository.addActivity(activity)
         }
     }
+
+    fun triggerTestCrash() {
+        throw RuntimeException("Test Crash")
+    }
 }
 
 sealed interface ActivityUiState {
