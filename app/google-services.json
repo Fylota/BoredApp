@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "373789137797",
+    "project_id": "boredapp-fe225",
+    "storage_bucket": "boredapp-fe225.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373789137797:android:737af97e2b454622be82ec",
+        "android_client_info": {
+          "package_name": "com.example.boredapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMZbpA1FpgE0AkjqcmoK48b7xD1R172eo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
